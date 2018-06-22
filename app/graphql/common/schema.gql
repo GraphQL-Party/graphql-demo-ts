@@ -1,0 +1,18 @@
+scalar Date
+scalar JSON
+
+## gps location
+type GPS {
+  coordinates: [Float]
+  type: String
+}
+
+interface Response {
+  errorCode: String
+  errorMsg: String
+}
+
+# fragment ErrorFrag on Error{
+#   errocode: String,
+#   errorMsg: String
+# }

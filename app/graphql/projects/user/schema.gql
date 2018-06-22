@@ -1,0 +1,27 @@
+# 用户信息
+type User {
+  _id: ID!
+  # 用户 id
+  userId: Int
+  # 用户名
+  userName: String
+  # 用户联系电话
+  mobilePhone: String
+  # 创建日期
+  gmtCreated: Date
+  # 最近更新日期
+  lastModified: Date
+  # 最近登录时间
+  lastLoginTime: Date
+  # 最近登录 ip
+  lastLoginIp: String
+}
+
+type Query {
+  # 获取用户列表
+  users: [User]
+  # 获取用户信息
+  user(userName: String): [User]
+}
+
+

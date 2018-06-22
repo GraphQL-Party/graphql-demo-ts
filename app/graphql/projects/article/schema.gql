@@ -1,0 +1,26 @@
+# 文章
+type Article {
+  # 文章 id
+  _id: ID!
+  # 文章标题
+  title: String
+  # 文章内容
+  content: String
+  # 作者信息
+  author: User
+  # 评论列表
+  comments: [Comment]
+  # 创建日期
+  gmtCreated: Date
+  # 最近修改日期
+  lastModified: Date
+}
+
+type Query {
+  # 获取文章列表
+  articles: [Article]
+  # 获取文章信息
+  article(title: String): Article
+}
+
+

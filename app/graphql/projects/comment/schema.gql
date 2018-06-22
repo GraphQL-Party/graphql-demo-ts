@@ -1,0 +1,13 @@
+# 评论
+type Comment {
+  # 评论 id
+  _id: ID!
+  # 评论内容
+  content: String
+  # 作者信息
+  author: User
+  # 创建日期
+  gmtCreated: Date
+  # 最近修改日期
+  lastModified: Date
+}
