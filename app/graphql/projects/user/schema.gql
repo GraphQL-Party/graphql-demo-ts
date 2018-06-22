@@ -1,8 +1,7 @@
 # 用户信息
 type User {
-  _id: ID!
   # 用户 id
-  userId: Int
+  id: String
   # 用户名
   userName: String
   # 用户联系电话
@@ -17,11 +16,23 @@ type User {
   lastLoginIp: String
 }
 
+input UserInputType {
+  # 用户名
+  userName: String
+  # 用户联系电话
+  mobilePhone: String
+}
+
 type Query {
   # 获取用户列表
   users: [User]
   # 获取用户信息
   user(userName: String): [User]
+}
+
+type Mutation {
+  ## 添加用户
+  addUser(user: UserInputType): User
 }
 
 

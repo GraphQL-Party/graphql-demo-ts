@@ -3,7 +3,6 @@ import { InfoConnection } from '../../../database/connections';
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  userId: Number,
   userName: String,
   mobilePhone: String,
   gmtCreated: Date,

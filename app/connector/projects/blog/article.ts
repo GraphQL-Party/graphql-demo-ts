@@ -5,8 +5,8 @@ const { Schema } = mongoose;
 const articleSchema = new Schema({
   title: String,
   content: String,
-  authorId: Number,
-  commentIds: [Number],
+  authorId: String,
+  commentIds: [String],
   gmtCreated: Date,
   lastModified: Date,
 }, {

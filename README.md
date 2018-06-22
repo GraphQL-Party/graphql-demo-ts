@@ -21,6 +21,18 @@ graphql demo 仅做参考
   npm start
 ```
 
-* 访问 [`graphiql`]('http://localhost:3000/graphiql')
+* 访问 [graphiql]('http://localhost:3000/graphiql')
 
-* 访问 [`voyager`]('http://localhost:3000/voyager')
+  http://localhost:3000/graphiql
+
+* 访问 [voyager]('http://localhost:3000/voyager')
+
+  http://localhost:3000/graphiql
+
+## 其他说明
+
+* 项目使用 ts 开发
+
+* 后端数据源不局限于 mongoDB
+
+* resolver 分层结构不局限于此

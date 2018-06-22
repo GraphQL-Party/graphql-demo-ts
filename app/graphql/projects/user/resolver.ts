@@ -10,4 +10,10 @@ export default {
       return result;
     },
   },
+  Mutation: {
+    addUser: async (root, { user }: { user: any }, context) => {
+      const result = await context.model.UserModel.addUser(user);
+      return result;
+    },
+  },
 };

@@ -11,3 +11,7 @@ type Comment {
   # 最近修改日期
   lastModified: Date
 }
+
+type Mutation {
+  addComment: Comment
+}

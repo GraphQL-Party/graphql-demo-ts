@@ -16,11 +16,25 @@ type Article {
   lastModified: Date
 }
 
+input ArticleInpuType {
+   # 文章标题
+  title: String
+  # 文章内容
+  content: String
+  # 作者信息
+  authorId: String
+}
+
 type Query {
   # 获取文章列表
   articles: [Article]
   # 获取文章信息
-  article(title: String): Article
+  article(title: String): [Article]
+}
+
+type Mutation {
+  # 添加文章
+  addArticle(article: ArticleInpuType): Article
 }
 
 

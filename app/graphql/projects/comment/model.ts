@@ -22,6 +22,14 @@ export default class CommentModel extends BaseModel {
     return result;
   }
 
+  async addComment (comment: any) {
+    const { BlogComment } = this.ctx.connector;
+    const commentInfo = new BlogComment(comment);
+    const result = await commentInfo.save();
+    // const result = await this.getCommentById(user.userName);
+    return result;
+  }
+
   async findById(id: number) {
     const result = await this.getCommentById(id);
     return result;

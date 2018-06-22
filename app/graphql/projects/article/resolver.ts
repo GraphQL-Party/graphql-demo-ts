@@ -20,4 +20,10 @@ export default {
       return result;
     },
   },
+  Mutation: {
+    addArticle: async (root, {article}: {article: any}, context) => {
+      const result = await context.model.ArticleModel.addArticle(article);
+      return result;
+    },
+  },
 };

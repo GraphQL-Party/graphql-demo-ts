@@ -7,7 +7,7 @@ export default class UserModel extends BaseModel {
     super(ctx);
     this.dataLoader = new DataLoader((keys) => new Promise((resolve, reject) => {
       this.ctx.connector.InfoUser.find({
-        userId: {
+        _id: {
           $in: keys,
         },
       }).then((res) => {
@@ -22,7 +22,14 @@ export default class UserModel extends BaseModel {
     return result;
   }
 
-  async findById(userId: number) {
+  async addUser (user: any) {
+    const { InfoUser } = this.ctx.connector;
+    const userInfo = new InfoUser(user);
+    const res = await userInfo.save();
+    return res;
+  }
+
+  async findById(userId: string) {
     const result = await this.getUserById(userId);
     return result;
   }
@@ -39,12 +46,12 @@ export default class UserModel extends BaseModel {
     return result;
   }
 
-  async getUsersByIds(ids: [number]) {
+  async getUsersByIds(ids: [string]) {
     const result = await this.dataLoader.loadManyItems(ids);
     return result;
   }
 
-  async getUserById(id: number) {
+  async getUserById(id: string) {
     const result = await this.dataLoader.loadOne(id);
     return result;
   }

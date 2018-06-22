@@ -22,6 +22,30 @@ export default class ArticleModel extends BaseModel {
     return result;
   }
 
+  async addArticle (article: any) {
+    const { BlogArticle } = this.ctx.connector;
+    const articleInfo = new BlogArticle(article);
+    const result = await articleInfo.save();
+    // const result = await this.getCommentById(user.userName);
+    return result;
+  }
+
+  async insertComment(articleId, commentId) {
+    const article = await this.findById(articleId);
+
+    const ids = article.commentIds || [];
+
+    ids.push(commentId);
+
+    article.commentIds = ids;
+
+    const result = await this.ctx.connector.BlogArticle.findByIdAndUpdate({
+      _id: article._id,
+    }, article);
+
+    return result;
+  }
+
   async findByTitle(title: string) {
     const result = await this.ctx.connector.BlogArticle.find({
       title,
@@ -29,7 +53,7 @@ export default class ArticleModel extends BaseModel {
     return result;
   }
 
-  async findById(id: number) {
+  async findById(id: string) {
     const result = await this.getArticleById(id);
     return result;
   }
@@ -39,12 +63,12 @@ export default class ArticleModel extends BaseModel {
     return result;
   }
 
-  async getByIds(ids: [number]) {
+  async getByIds(ids: [string]) {
     const result = await this.dataLoader.loadManyItems(ids);
     return result;
   }
 
-  async getArticleById(id: number) {
+  async getArticleById(id: string) {
     const result = await this.dataLoader.loadOne(id);
     return result;
   }
